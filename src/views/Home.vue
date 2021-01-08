@@ -3,12 +3,16 @@
     <app-topbar />
     <app-breadcrumb class="mt-4" />
 
-    <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-10">
+    <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
       <div>
         <div class="select-all-product">select-all from shop ou</div>
 
         <template v-for="item in 10">
-          <product-item :key="item" class="my-1" />
+          <product-item
+            :key="item"
+            class="my-3"
+            @click="handleClickingProduct"
+          />
         </template>
       </div>
 
@@ -16,7 +20,7 @@
         <div class="select-all-product">select-all from shop gow</div>
 
         <template v-for="item in 10">
-          <product-item :key="item" class="my-1" />
+          <product-item :key="item" class="my-3" />
         </template>
       </div>
 
@@ -24,7 +28,7 @@
         <div class="select-all-product">select-all from shop dow</div>
 
         <template v-for="item in 10">
-          <product-item :key="item" class="my-1" />
+          <product-item :key="item" class="my-3" />
         </template>
       </div>
 
@@ -32,7 +36,7 @@
         <div class="select-all-product">select-all from shop aows</div>
 
         <template v-for="item in 10">
-          <product-item :key="item" class="my-1" />
+          <product-item :key="item" class="my-3" />
         </template>
       </div>
     </section>
@@ -49,6 +53,11 @@ export default {
     AppTopbar,
     AppBreadcrumb,
     ProductItem
+  },
+  methods: {
+    handleClickingProduct(name, sku) {
+      console.log(name, sku);
+    }
   }
 };
 AppTopbar;

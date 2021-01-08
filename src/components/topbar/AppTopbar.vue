@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mt-10">
       <div>
-        <img src="../assets/img/logo.png" class="app-logo" />
+        <img src="@/assets/img/logo.png" class="app-logo" />
       </div>
       <div class="flex items-center justify-between">
-        <div>1</div>
+        <topbar-nav-links />
         <div>2</div>
       </div>
     </div>
@@ -13,8 +13,10 @@
 </template>
 
 <script>
+import TopbarNavLinks from "./TopbarNavLinks.vue";
 export default {
-  name: "AppTopbar"
+  name: "AppTopbar",
+  components: { TopbarNavLinks }
 };
 </script>
 

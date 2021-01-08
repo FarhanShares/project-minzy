@@ -1,11 +1,13 @@
 <template>
   <div class="home">
     <app-topbar />
-    <app-breadcrumb class="mt-4" />
+    <app-breadcrumb class="mt-4" @select-all="handleSelection('all')" />
 
     <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
       <div>
-        <div class="select-all-product">select-all from shop ou</div>
+        <div class="select-all-product" @click="handleSelection('ou')">
+          select-all from shop ou
+        </div>
 
         <template v-for="(item, index) in shop_ou">
           <div class="flex items-center" :key="index">
@@ -30,7 +32,9 @@
       </div>
 
       <div>
-        <div class="select-all-product">select-all from shop gow</div>
+        <div class="select-all-product" @click="handleSelection('gow')">
+          select-all from shop gow
+        </div>
 
         <template v-for="(item, index) in shop_gow">
           <div class="flex items-center" :key="index">
@@ -55,7 +59,9 @@
       </div>
 
       <div>
-        <div class="select-all-product">select-all from shop dow</div>
+        <div class="select-all-product" @click="handleSelection('dow')">
+          select-all from shop dow
+        </div>
 
         <template v-for="(item, index) in shop_dow">
           <div class="flex items-center" :key="index">
@@ -80,7 +86,9 @@
       </div>
 
       <div>
-        <div class="select-all-product">select-all from shop aows</div>
+        <div class="select-all-product" @click="handleSelection('aows')">
+          select-all from shop aows
+        </div>
 
         <template v-for="(item, index) in shop_aows">
           <div class="flex items-center" :key="index">
@@ -172,6 +180,46 @@ export default {
       if (shop === "aows") {
         this.shop_aows[index].selected = !this.shop_aows[index].selected;
       }
+    },
+    handleSelection(from = "ou") {
+      let selectAllOu = () => {
+        this.shop_ou.forEach(val => {
+          val.selected = !val.selected;
+        });
+      };
+      let selectAllGow = () => {
+        this.shop_gow.forEach(val => {
+          val.selected = !val.selected;
+        });
+      };
+      let selectAllDow = () => {
+        this.shop_dow.forEach(val => {
+          val.selected = !val.selected;
+        });
+      };
+      let selectAllAows = () => {
+        this.shop_aows.forEach(val => {
+          val.selected = !val.selected;
+        });
+      };
+      if (from === "ou") {
+        selectAllOu();
+      }
+      if (from === "gow") {
+        selectAllGow();
+      }
+      if (from === "dow") {
+        selectAllDow();
+      }
+      if (from === "aows") {
+        selectAllAows();
+      }
+      if (from === "all") {
+        selectAllOu();
+        selectAllGow();
+        selectAllDow();
+        selectAllAows();
+      }
     }
   }
 };
@@ -180,6 +228,6 @@ AppTopbar;
 
 <style lang="scss" scoped>
 .select-all-product {
-  @apply mt-8 mb-2 text-sm font-medium;
+  @apply mt-8 mb-2 text-sm font-medium cursor-pointer;
 }
 </style>

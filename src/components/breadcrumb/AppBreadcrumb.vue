@@ -11,12 +11,17 @@
       <breadcrumb-separator />
       <breadcrumb-item title="shop aows" badge="" :muted="true" />
     </div>
-    <div class="flex items-center mt-5">
-      <breadcrumb-item title="print labels" :underlined="false" />
-      <breadcrumb-separator />
-      <breadcrumb-item title="packing europ" :underlined="true" />
-      <breadcrumb-separator />
-      <breadcrumb-item title="packing world" :underlined="false" />
+    <div class="flex items-center">
+      <div class="flex items-center mt-5">
+        <breadcrumb-item title="print labels" :underlined="false" />
+        <breadcrumb-separator />
+        <breadcrumb-item title="packing europ" :underlined="true" />
+        <breadcrumb-separator />
+        <breadcrumb-item title="packing world" :underlined="false" />
+      </div>
+      <div class="mt-8 ml-12 text-sm font-medium" @click="$emit('select-all')">
+        select all
+      </div>
     </div>
   </div>
 </template>

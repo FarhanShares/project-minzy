@@ -1,16 +1,18 @@
 <template>
   <div class="home">
     <app-topbar />
-    Home
+    <app-breadcrumb />
   </div>
 </template>
 
 <script>
-import AppTopbar from "@/components/AppTopbar.vue";
+import AppTopbar from "@/components/topbar/AppTopbar.vue";
+import AppBreadcrumb from "@/components/breadcrumb/AppBreadcrumb.vue";
 export default {
   name: "Home",
   components: {
-    AppTopbar
+    AppTopbar,
+    AppBreadcrumb
   }
 };
 AppTopbar;

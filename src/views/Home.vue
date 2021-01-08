@@ -82,8 +82,25 @@
       <div>
         <div class="select-all-product">select-all from shop aows</div>
 
-        <template v-for="item in 10">
-          <product-item :key="item" class="my-3" />
+        <template v-for="(item, index) in shop_aows">
+          <div class="flex items-center" :key="index">
+            <div
+              v-if="item.selected"
+              class="w-2 mt-px mr-1 bg-red-500 "
+              style="height: 106px"
+            />
+            <div
+              v-if="!item.selected"
+              class="w-2 mt-px mr-1 bg-white "
+              style="height: 106px"
+            />
+            <product-item
+              :name="item.name"
+              :sku="item.sku"
+              class="my-3"
+              @click="handleClickingProduct(item, index, 'aows')"
+            />
+          </div>
         </template>
       </div>
     </section>
@@ -151,6 +168,9 @@ export default {
       }
       if (shop === "dow") {
         this.shop_dow[index].selected = !this.shop_dow[index].selected;
+      }
+      if (shop === "aows") {
+        this.shop_aows[index].selected = !this.shop_aows[index].selected;
       }
     }
   }

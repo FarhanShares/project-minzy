@@ -19,7 +19,10 @@
         <breadcrumb-separator />
         <breadcrumb-item title="packing world" :underlined="false" />
       </div>
-      <div class="mt-8 ml-12 text-sm font-medium" @click="$emit('select-all')">
+      <div
+        class="mt-8 ml-12 text-sm font-medium cursor-pointer"
+        @click="$emit('select-all')"
+      >
         select all
       </div>
     </div>

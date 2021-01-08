@@ -1,7 +1,13 @@
 <template>
   <div class="flex items-center">
     <div class="grid grid-cols-2">
-      <img :src="image" :alt="imageAlt" />
+      <img
+        :src="image"
+        :alt="imageAlt"
+        class="cursor-pointer"
+        @click="$emit('click', name, sku)"
+      />
+
       <div class="grid grid-cols-2 text-xs text-gray-400">
         <div class="pl-2">
           <div class="mt-1">{{ name }}</div>

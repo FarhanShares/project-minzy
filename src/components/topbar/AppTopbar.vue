@@ -6,7 +6,7 @@
       </div>
       <div class="flex items-center justify-between">
         <topbar-nav-links />
-        <div>2</div>
+        <topbar-search class="ml-24" />
       </div>
     </div>
   </div>
@@ -14,9 +14,10 @@
 
 <script>
 import TopbarNavLinks from "./TopbarNavLinks.vue";
+import TopbarSearch from "./TopbarSearch.vue";
 export default {
   name: "AppTopbar",
-  components: { TopbarNavLinks }
+  components: { TopbarNavLinks, TopbarSearch }
 };
 </script>
 

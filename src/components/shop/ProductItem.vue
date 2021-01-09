@@ -106,6 +106,7 @@ export default {
   methods: {
     handleCheckbox() {
       this.isSelected = !this.isSelected;
+      this.$emit("change", this.isSelected);
     }
   }
 };

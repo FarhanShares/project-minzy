@@ -2,7 +2,7 @@
   <section class="flex items-center">
     <div
       class="w-2 mt-px mr-1 "
-      :class="isSelected ? 'bg-orange-400' : 'bg-white'"
+      :class="isSelected ? 'bg-red-400' : 'bg-white'"
       style="height: 110px"
     />
     <label class="flex items-center">

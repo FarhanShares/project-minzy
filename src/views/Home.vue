@@ -10,24 +10,13 @@
         </div>
 
         <template v-for="(item, index) in shop_ou">
-          <div class="flex items-center" :key="index">
-            <div
-              v-if="item.selected"
-              class="w-2 mt-px mr-1 bg-red-500 "
-              style="height: 106px"
-            />
-            <div
-              v-if="!item.selected"
-              class="w-2 mt-px mr-1 bg-white "
-              style="height: 106px"
-            />
-            <product-item
-              :name="item.name"
-              :sku="item.sku"
-              class="my-3"
-              @click="handleClickingProduct(item, index, 'ou')"
-            />
-          </div>
+          <product-item
+            :name="item.name"
+            :sku="item.sku"
+            :key="index"
+            class="my-3"
+            @click="handleClickingProduct(item, index, 'ou')"
+          />
         </template>
       </div>
 
@@ -37,24 +26,13 @@
         </div>
 
         <template v-for="(item, index) in shop_gow">
-          <div class="flex items-center" :key="index">
-            <div
-              v-if="item.selected"
-              class="w-2 mt-px mr-1 bg-red-500 "
-              style="height: 106px"
-            />
-            <div
-              v-if="!item.selected"
-              class="w-2 mt-px mr-1 bg-white "
-              style="height: 106px"
-            />
-            <product-item
-              :name="item.name"
-              :sku="item.sku"
-              class="my-3"
-              @click="handleClickingProduct(item, index, 'gow')"
-            />
-          </div>
+          <product-item
+            :name="item.name"
+            :sku="item.sku"
+            :key="index"
+            class="my-3"
+            @click="handleClickingProduct(item, index, 'gow')"
+          />
         </template>
       </div>
 
@@ -64,24 +42,13 @@
         </div>
 
         <template v-for="(item, index) in shop_dow">
-          <div class="flex items-center" :key="index">
-            <div
-              v-if="item.selected"
-              class="w-2 mt-px mr-1 bg-red-500 "
-              style="height: 106px"
-            />
-            <div
-              v-if="!item.selected"
-              class="w-2 mt-px mr-1 bg-white "
-              style="height: 106px"
-            />
-            <product-item
-              :name="item.name"
-              :sku="item.sku"
-              class="my-3"
-              @click="handleClickingProduct(item, index, 'dow')"
-            />
-          </div>
+          <product-item
+            :name="item.name"
+            :sku="item.sku"
+            :key="index"
+            class="my-3"
+            @click="handleClickingProduct(item, index, 'dow')"
+          />
         </template>
       </div>
 
@@ -89,26 +56,14 @@
         <div class="select-all-product" @click="handleSelection('aows')">
           select-all from shop aows
         </div>
-
         <template v-for="(item, index) in shop_aows">
-          <div class="flex items-center" :key="index">
-            <div
-              v-if="item.selected"
-              class="w-2 mt-px mr-1 bg-red-500 "
-              style="height: 106px"
-            />
-            <div
-              v-if="!item.selected"
-              class="w-2 mt-px mr-1 bg-white "
-              style="height: 106px"
-            />
-            <product-item
-              :name="item.name"
-              :sku="item.sku"
-              class="my-3"
-              @click="handleClickingProduct(item, index, 'aows')"
-            />
-          </div>
+          <product-item
+            :name="item.name"
+            :sku="item.sku"
+            :key="index"
+            class="my-3"
+            @click="handleClickingProduct(item, index, 'aows')"
+          />
         </template>
       </div>
     </section>

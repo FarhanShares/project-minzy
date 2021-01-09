@@ -1,31 +1,46 @@
 <template>
-  <div class="flex items-center">
-    <div class="grid grid-cols-2">
-      <img
-        :src="image"
-        :alt="imageAlt"
-        class="cursor-pointer"
-        @click="$emit('click', name, sku)"
+  <section class="flex items-center">
+    <div
+      class="w-2 mt-px mr-1 "
+      :class="isSelected ? 'bg-orange-400' : 'bg-white'"
+      style="height: 110px"
+    />
+    <label class="flex items-center">
+      <input
+        type="checkbox"
+        :name="sku"
+        ref="checkbox"
+        value="true"
+        class="hidden"
+        @change="handleCheckbox"
       />
+      <div class="grid grid-cols-2">
+        <img
+          :src="image"
+          :alt="imageAlt"
+          class="cursor-pointer"
+          @click="$emit('click', name, sku)"
+        />
 
-      <div class="grid grid-cols-2 text-xs text-gray-400">
-        <div class="pl-2">
-          <div class="mt-1">{{ name }}</div>
-          <div class="mt-1">{{ model }}</div>
-          <div class="mt-1">{{ sku }}</div>
-          <div class="mt-1">type</div>
-          <div class="mt-1">{{ country }}</div>
-        </div>
-        <div class="pl-2">
-          <div class="mt-1">{{ orderingDate }}</div>
-          <div class="mt-1">{{ deliveryDate }}</div>
-          <div class="mt-1">{{ getDate }}</div>
-          <div class="mt-1">{{ type }}</div>
-          <div class="mt-1">{{ code }}</div>
+        <div class="grid grid-cols-2 text-xs text-gray-400">
+          <div class="pl-2">
+            <div class="mt-1">{{ name }}</div>
+            <div class="mt-1">{{ model }}</div>
+            <div class="mt-1">{{ sku }}</div>
+            <div class="mt-1">type</div>
+            <div class="mt-1">{{ country }}</div>
+          </div>
+          <div class="pl-2">
+            <div class="mt-1">{{ orderingDate }}</div>
+            <div class="mt-1">{{ deliveryDate }}</div>
+            <div class="mt-1">{{ getDate }}</div>
+            <div class="mt-1">{{ type }}</div>
+            <div class="mt-1">{{ code }}</div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </label>
+  </section>
 </template>
 
 <script>
@@ -80,12 +95,21 @@ export default {
       default: false
     }
   },
+  data() {
+    return { isSelected: false };
+  },
   computed: {
     getDate() {
       return "3 days left";
+    }
+  },
+  methods: {
+    handleCheckbox() {
+      this.isSelected = !this.isSelected;
     }
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

@@ -44,7 +44,14 @@ export default new Vuex.Store({
   },
   mutations: {
     SELECT_A_PRODUCT(state, payload) {
+      if (state.selected.includes(payload.id)) return;
+
       state.selected.push(payload.id);
+    },
+    DESELECT_A_PRODUCT(state, payload) {
+      let index = state.selected.indexOf(payload.id);
+
+      if (index !== -1) state.selected.splice(index, 1);
     },
     SELECT_ALL_PRODUCTS(state) {
       state.selected = state.products.ou;

@@ -105,7 +105,7 @@ export default new Vuex.Store({
       }
     },
     selectAllProducts({ state, commit }, payload) {
-      if (state.selectedAll.all) {
+      if (state.selectedAll[payload.shop]) {
         commit("DESELECT_ALL_PRODUCTS", payload);
       } else {
         commit("SELECT_ALL_PRODUCTS", payload);

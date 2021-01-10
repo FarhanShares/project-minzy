@@ -1,16 +1,46 @@
 <template>
   <div class="flex items-center justify-between">
     <div class="flex items-center mt-5">
-      <breadcrumb-item title="all" badge="89" :muted="false" />
+      <breadcrumb-item
+        title="all"
+        badge="89"
+        :muted="isMuted('all')"
+        @click="switchShop('all')"
+      />
+
       <breadcrumb-separator />
-      <breadcrumb-item title="shop ou" badge="89" :muted="true" />
+      <breadcrumb-item
+        title="shop ou"
+        badge="89"
+        :muted="isMuted('ou')"
+        @click="switchShop('ou')"
+      />
+
       <breadcrumb-separator />
-      <breadcrumb-item title="shop gow" badge="" :muted="true" />
+      <breadcrumb-item
+        title="shop gow"
+        badge=""
+        :muted="isMuted('gow')"
+        @click="switchShop('gow')"
+      />
+
       <breadcrumb-separator />
-      <breadcrumb-item title="shop dow" badge="76" :muted="true" />
+      <breadcrumb-item
+        title="shop dow"
+        badge="76"
+        :muted="isMuted('dow')"
+        @click="switchShop('dow')"
+      />
+
       <breadcrumb-separator />
-      <breadcrumb-item title="shop aows" badge="" :muted="true" />
+      <breadcrumb-item
+        title="shop aows"
+        badge=""
+        :muted="isMuted('aows')"
+        @click="switchShop('aows')"
+      />
     </div>
+
     <div class="flex items-center">
       <div class="flex items-center mt-5">
         <breadcrumb-item title="print labels" :underlined="false" />
@@ -34,7 +64,21 @@ import BreadcrumbItem from "./BreadcrumbItem.vue";
 import BreadcrumbSeparator from "./BreadcrumbSeparator.vue";
 export default {
   components: { BreadcrumbItem, BreadcrumbSeparator },
-  name: "AppBreadcrumb"
+  name: "AppBreadcrumb",
+  data() {
+    return {
+      currentShopId: "all"
+    };
+  },
+  methods: {
+    isMuted(shopId) {
+      return this.currentShopId !== shopId;
+    },
+    switchShop(shopId) {
+      this.currentShopId = shopId;
+      this.$emit("shop-switched", shopId);
+    }
+  }
 };
 </script>
 

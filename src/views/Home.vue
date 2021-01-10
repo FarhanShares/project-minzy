@@ -11,7 +11,30 @@
       Selected Items: {{ getSelectedProducts }}
     </div>
 
-    <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
+    <section v-if="currentShopId !== 'all'">
+      <div>
+        <div class="select-all-product" @click="handleSelection(currentShopId)">
+          select-all from shop {{ currentShopId }}
+        </div>
+
+        <template v-for="(item, index) in getProducts(currentShopId)">
+          <product-item
+            class="my-3"
+            :id="item.id"
+            :shop="currentShopId"
+            :name="item.name"
+            :sku="item.sku"
+            :key="index"
+            @click="handleClickingProduct(item.id, currentShopId)"
+          />
+        </template>
+      </div>
+    </section>
+
+    <section
+      v-if="currentShopId === 'all'"
+      class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8"
+    >
       <div>
         <div class="select-all-product" @click="handleSelection('ou')">
           select-all from shop ou

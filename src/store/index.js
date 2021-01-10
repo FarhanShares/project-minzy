@@ -88,10 +88,10 @@ export default new Vuex.Store({
         }
       } else {
         // remove all selected first
-        for (const [shop] of Object.entries(state.products)) {
-          state.selected[shop] = [];
-        }
-        state.selectedAll.all = true;
+        // for (const [shop] of Object.entries(state.products)) {
+        //   state.selected[shop] = [];
+        // }
+        state.selectedAll.all = false;
 
         // select the specific shop products
         let getProducts = state.products[payload.shop] || [];

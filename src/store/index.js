@@ -5,7 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    selected: ["OU_01"],
+    selected: {
+      ou: [],
+      gow: [],
+      dow: [],
+      aows: []
+    },
     products: {
       ou: [
         { id: "OU_01", name: "order-01", sku: "SKU001" },
@@ -39,31 +44,33 @@ export default new Vuex.Store({
   },
   getters: {
     getSelectedProducts: state => {
-      return state.selected;
+      return state.selected.ou;
     }
   },
   mutations: {
     SELECT_A_PRODUCT(state, payload) {
-      if (state.selected.includes(payload.id)) return;
+      let shop = state.selected[payload.shop];
+      if (shop && shop.includes(payload.id)) return;
 
-      state.selected.push(payload.id);
+      shop.push(payload.id);
     },
     DESELECT_A_PRODUCT(state, payload) {
-      let index = state.selected.indexOf(payload.id);
+      let shop = state.selected[payload.shop];
+      if (shop) {
+        let index = shop.indexOf(payload.id);
 
-      if (index !== -1) state.selected.splice(index, 1);
+        if (index !== -1) shop.splice(index, 1);
+      }
     },
     SELECT_ALL_PRODUCTS(state) {
       state.selected = state.products.ou;
     }
   },
   actions: {
-    isSelected({ state }, payload) {
-      return state.selected.includes(payload.id);
-    },
     selectAProduct({ commit, state }, payload) {
-      if (state.selected.includes(payload.id)) {
-        // console.warn("alreadySelected");
+      let shop = state.selected[payload.shop];
+
+      if (shop && shop.includes(payload.id)) {
         commit("DESELECT_A_PRODUCT", payload);
       } else {
         commit("SELECT_A_PRODUCT", payload);

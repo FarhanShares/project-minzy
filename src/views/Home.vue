@@ -5,6 +5,7 @@
       class="mt-4"
       @select-all="handleSelection()"
       @shop-switched="handleSwitchingShop"
+      @page-changed="handleChangingPage"
     />
 
     <div class="my-5 text-gray-600 font-xs">
@@ -127,7 +128,8 @@ export default {
   data() {
     return {
       name: "Farhan Israq",
-      currentShopId: "all"
+      currentShopId: "all",
+      currentPageId: "labels"
     };
   },
   computed: {
@@ -147,6 +149,9 @@ export default {
     },
     handleSwitchingShop(e) {
       this.currentShopId = e;
+    },
+    handleChangingPage(e) {
+      this.currentPageId = e;
     }
   }
 };

@@ -22,13 +22,15 @@
         </template>
       </div>
 
-      <!-- <div>
+      <div>
         <div class="select-all-product" @click="handleSelection('gow')">
           select-all from shop gow
         </div>
 
-        <template v-for="(item, index) in shop_gow">
+        <template v-for="(item, index) in getProducts('gow')">
           <product-item
+            :id="item.id"
+            :shop="`gow`"
             :name="item.name"
             :sku="item.sku"
             :key="index"
@@ -43,8 +45,10 @@
           select-all from shop dow
         </div>
 
-        <template v-for="(item, index) in shop_dow">
+        <template v-for="(item, index) in getProducts('dow')">
           <product-item
+            :id="item.id"
+            :shop="`dow`"
             :name="item.name"
             :sku="item.sku"
             :key="index"
@@ -58,8 +62,10 @@
         <div class="select-all-product" @click="handleSelection('aows')">
           select-all from shop aows
         </div>
-        <template v-for="(item, index) in shop_aows">
+        <template v-for="(item, index) in getProducts('aows')">
           <product-item
+            :id="item.id"
+            :shop="`aows`"
             :name="item.name"
             :sku="item.sku"
             :key="index"
@@ -67,7 +73,7 @@
             @click="handleClickingProduct(item, index, 'aows')"
           />
         </template>
-      </div> -->
+      </div>
     </section>
   </div>
 </template>

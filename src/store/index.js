@@ -58,8 +58,16 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    selectAProduct({ commit }, payload) {
-      commit("SELECT_A_PRODUCT", payload);
+    isSelected({ state }, payload) {
+      return state.selected.includes(payload.id);
+    },
+    selectAProduct({ commit, state }, payload) {
+      if (state.selected.includes(payload.id)) {
+        // console.warn("alreadySelected");
+        commit("DESELECT_A_PRODUCT", payload);
+      } else {
+        commit("SELECT_A_PRODUCT", payload);
+      }
     },
     selectAllProducts({ commit }) {
       commit("SELECT_ALL_PRODUCTS");

@@ -1,26 +1,28 @@
 <template>
   <div class="home">
     <app-topbar />
-    <app-breadcrumb class="mt-4" @select-all="handleSelection('all')" />
+    <app-breadcrumb class="mt-4" @select-all="selectallp(true)" />
 
     <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
       <div>
         <div class="select-all-product" @click="handleSelection('ou')">
           select-all from shop ou
         </div>
-
-        <template v-for="(item, index) in shop_ou">
+        {{ getSelectedProducts }}
+        <template v-for="(item, index) in getProducts('ou')">
           <product-item
+            class="my-3"
+            :id="item.id"
+            :shop="`ou`"
             :name="item.name"
             :sku="item.sku"
             :key="index"
-            class="my-3"
-            @click="handleClickingProduct(item, index, 'ou')"
+            @click="handleClickingProduct(item.id, 'ou')"
           />
         </template>
       </div>
 
-      <div>
+      <!-- <div>
         <div class="select-all-product" @click="handleSelection('gow')">
           select-all from shop gow
         </div>
@@ -65,7 +67,7 @@
             @click="handleClickingProduct(item, index, 'aows')"
           />
         </template>
-      </div>
+      </div> -->
     </section>
   </div>
 </template>
@@ -118,23 +120,18 @@ export default {
         { name: "aows-05", sku: "SKU0015", selected: false },
         { name: "aows-06", sku: "SKU0016", selected: false },
         { name: "aows-07", sku: "SKU0017", selected: false }
-      ]
+      ],
+      selected: []
     };
   },
+  computed: {
+    getSelectedProducts() {
+      return this.$store.getters.getSelectedProducts;
+    }
+  },
   methods: {
-    handleClickingProduct(item, index, shop) {
-      if (shop === "ou") {
-        this.shop_ou[index].selected = !this.shop_ou[index].selected;
-      }
-      if (shop === "gow") {
-        this.shop_gow[index].selected = !this.shop_gow[index].selected;
-      }
-      if (shop === "dow") {
-        this.shop_dow[index].selected = !this.shop_dow[index].selected;
-      }
-      if (shop === "aows") {
-        this.shop_aows[index].selected = !this.shop_aows[index].selected;
-      }
+    handleClickingProduct(item, shop) {
+      this.$store.dispatch("selectAProduct", { id: item, shop });
     },
     handleSelection(from = "ou") {
       let selectAllOu = () => {
@@ -175,7 +172,26 @@ export default {
         selectAllDow();
         selectAllAows();
       }
+    },
+    selectallp(value) {
+      var selected = [];
+      if (value) {
+        this.shop_ou.forEach(function(product) {
+          selected.push(product.sku);
+        });
+      }
+      console.warn(selected);
+      this.selected = selected;
+    },
+    addSelection(item) {
+      this.selected.push(item.sku);
+    },
+    getProducts(shopName) {
+      return this.$store.state.products[shopName];
     }
+  },
+  mounted() {
+    console.warn("ou", this.getProducts("ou"));
   }
 };
 AppTopbar;

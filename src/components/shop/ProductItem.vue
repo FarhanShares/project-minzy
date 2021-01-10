@@ -34,7 +34,7 @@
 </template>
 
 <script>
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "ProductItem",
@@ -97,22 +97,19 @@ export default {
     getDate() {
       return "3 days left";
     },
-    // ...mapState({
-    //   isSelected(state) {
-    //     return state.producuts[this.shop].includes(this.id);
-    //   }
-    // })
-    isSelected() {
-      return false;
-      // return this.$stote.state.products[this.shop].includes(this.id);
-    }
+    ...mapState({
+      isSelected(state) {
+        console.warn(this.id, "==>", state.selected.includes(this.id));
+        return state.selected.includes(this.id);
+      }
+    })
   },
   methods: {
-    handleChange() {
-      if (this.isSelected) {
-        alert(this.isSelected);
-      }
-    }
+    // handleChange() {
+    //   if (this.isSelected) {
+    //     alert(this.isSelected);
+    //   }
+    // }
   }
 };
 </script>

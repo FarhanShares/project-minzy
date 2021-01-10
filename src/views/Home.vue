@@ -97,7 +97,7 @@ export default {
   },
   computed: {
     getSelectedProducts() {
-      return this.$store.getters.getSelectedProducts;
+      return this.$store.getters.getSelectedProducts("all");
     }
   },
   methods: {

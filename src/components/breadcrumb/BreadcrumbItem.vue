@@ -10,7 +10,7 @@
     </div>
 
     <div
-      class="text-xl font-medium tracking-wide border-b-4"
+      class="text-xl font-medium tracking-wide border-b-4 cursor-pointer"
       :class="getTitleClass"
     >
       {{ title }}

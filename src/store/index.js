@@ -84,13 +84,19 @@ export default new Vuex.Store({
           // console.table(state.selected[shop]);
         }
       } else {
-        // select from a specific shop
-        let getProducts = state.products[payload.shop] || {};
+        // remove all selected first
+        for (const [shop] of Object.entries(state.products)) {
+          state.selected[shop] = [];
+        }
+        state.selectedAll.all = true;
 
-        for (const products of Object.entries(getProducts)) {
-          products.forEach(item => {
-            state.selected[payload.shop].push(item.id);
-          });
+        // select the specific shop products
+        let getProducts = state.products[payload.shop] || [];
+
+        for (const key in getProducts) {
+          // console.warn(getProducts[key].id);
+          state.selected[payload.shop].push(getProducts[key].id);
+
           state.selectedAll[payload.shop] = true;
         }
       }

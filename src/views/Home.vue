@@ -12,11 +12,11 @@
     </div>
 
     <section v-if="currentShopId !== 'all'">
-      <div>
-        <div class="select-all-product" @click="handleSelection(currentShopId)">
-          select-all from shop {{ currentShopId }}
-        </div>
+      <div class="select-all-product" @click="handleSelection(currentShopId)">
+        select-all from shop {{ currentShopId }}
+      </div>
 
+      <div class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
         <template v-for="(item, index) in getProducts(currentShopId)">
           <product-item
             class="my-3"

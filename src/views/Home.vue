@@ -180,25 +180,12 @@ export default {
         selectAllAows();
       }
     },
-    selectallp(value) {
-      var selected = [];
-      if (value) {
-        this.shop_ou.forEach(function(product) {
-          selected.push(product.sku);
-        });
-      }
-      console.warn(selected);
-      this.selected = selected;
-    },
-    addSelection(item) {
-      this.selected.push(item.sku);
-    },
     getProducts(shopName) {
       return this.$store.state.products[shopName];
     }
   },
   mounted() {
-    console.warn("ou", this.getProducts("ou"));
+    // console.warn("ou", this.getProducts("ou"));
   }
 };
 AppTopbar;

@@ -11,6 +11,12 @@ export default new Vuex.Store({
       dow: [],
       aows: []
     },
+    selectedAll: {
+      all: false,
+      ou: false,
+      gow: false,
+      aows: false
+    },
     products: {
       ou: [
         { id: "OU_01", name: "order-01", sku: "SKU001" },
@@ -63,7 +69,24 @@ export default new Vuex.Store({
       }
     },
     SELECT_ALL_PRODUCTS(state) {
-      state.selected = state.products.ou;
+      for (const [shop, products] of Object.entries(state.products)) {
+        products.forEach(item => {
+          // console.log(item.id);
+          state.selected[shop].push(item.id);
+        });
+        state.selectedAll.all = true;
+        // console.log(shop);
+        // console.log(products);
+        // console.table(state.selected[shop]);
+      }
+    },
+    DESELECT_ALL_PRODUCTS(state) {
+      for (const [shop] of Object.entries(state.products)) {
+        state.selected[shop] = [];
+        // console.log(shop);
+        // console.table(state.selected[shop]);
+      }
+      state.selectedAll.all = false;
     }
   },
   actions: {
@@ -81,8 +104,12 @@ export default new Vuex.Store({
         commit("SELECT_A_PRODUCT", payload);
       }
     },
-    selectAllProducts({ commit }) {
-      commit("SELECT_ALL_PRODUCTS");
+    selectAllProducts({ state, commit }, payload) {
+      if (state.selectedAll.all) {
+        commit("DESELECT_ALL_PRODUCTS", payload);
+      } else {
+        commit("SELECT_ALL_PRODUCTS", payload);
+      }
     }
   },
   modules: {}

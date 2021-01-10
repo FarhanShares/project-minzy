@@ -95,13 +95,20 @@ export default new Vuex.Store({
         }
       }
     },
-    DESELECT_ALL_PRODUCTS(state) {
-      for (const [shop] of Object.entries(state.products)) {
-        state.selected[shop] = [];
-        // console.log(shop);
-        // console.table(state.selected[shop]);
+    DESELECT_ALL_PRODUCTS(state, payload) {
+      if (payload.shop === "all") {
+        for (const [shop] of Object.entries(state.products)) {
+          state.selected[shop] = [];
+          // console.log(shop);
+          // console.table(state.selected[shop]);
+        }
+        state.selectedAll.all = false;
+      } else {
+        state.selected[payload.shop] = [];
+
+        state.selectedAll[payload.shop] = false;
+        state.selectedAll.all = false;
       }
-      state.selectedAll.all = false;
     }
   },
   actions: {

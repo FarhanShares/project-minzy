@@ -43,11 +43,25 @@
 
     <div class="flex items-center">
       <div class="flex items-center mt-5">
-        <breadcrumb-item title="print labels" :underlined="false" />
+        <breadcrumb-item
+          title="print labels"
+          :underlined="isUnderlined('labels')"
+          @click="changePage('labels')"
+        />
+
         <breadcrumb-separator />
-        <breadcrumb-item title="packing europ" :underlined="true" />
+        <breadcrumb-item
+          title="packing europe"
+          :underlined="isUnderlined('europe')"
+          @click="changePage('europe')"
+        />
+
         <breadcrumb-separator />
-        <breadcrumb-item title="packing world" :underlined="false" />
+        <breadcrumb-item
+          title="packing world"
+          :underlined="isUnderlined('world')"
+          @click="changePage('world')"
+        />
       </div>
       <div
         class="mt-8 ml-12 text-sm font-medium cursor-pointer"
@@ -67,7 +81,8 @@ export default {
   name: "AppBreadcrumb",
   data() {
     return {
-      currentShopId: "all"
+      currentShopId: "all",
+      currentPageId: "labels"
     };
   },
   methods: {
@@ -77,6 +92,13 @@ export default {
     switchShop(shopId) {
       this.currentShopId = shopId;
       this.$emit("shop-switched", shopId);
+    },
+    isUnderlined(pageId) {
+      return this.currentPageId === pageId;
+    },
+    changePage(pageId) {
+      this.currentPageId = pageId;
+      this.$emit("page-changed", pageId);
     }
   }
 };

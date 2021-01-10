@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <app-topbar />
-    <app-breadcrumb class="mt-4" @select-all="selectallp(true)" />
+    <app-breadcrumb class="mt-4" @select-all="handleSelection()" />
 
     {{ getSelectedProducts }}
 
@@ -104,45 +104,8 @@ export default {
     handleClickingProduct(item, shop) {
       this.$store.dispatch("selectAProduct", { id: item, shop });
     },
-    handleSelection(from = "ou") {
-      let selectAllOu = () => {
-        this.shop_ou.forEach(val => {
-          val.selected = !val.selected;
-        });
-      };
-      let selectAllGow = () => {
-        this.shop_gow.forEach(val => {
-          val.selected = !val.selected;
-        });
-      };
-      let selectAllDow = () => {
-        this.shop_dow.forEach(val => {
-          val.selected = !val.selected;
-        });
-      };
-      let selectAllAows = () => {
-        this.shop_aows.forEach(val => {
-          val.selected = !val.selected;
-        });
-      };
-      if (from === "ou") {
-        selectAllOu();
-      }
-      if (from === "gow") {
-        selectAllGow();
-      }
-      if (from === "dow") {
-        selectAllDow();
-      }
-      if (from === "aows") {
-        selectAllAows();
-      }
-      if (from === "all") {
-        selectAllOu();
-        selectAllGow();
-        selectAllDow();
-        selectAllAows();
-      }
+    handleSelection(from = "all") {
+      this.$store.dispatch("selectAllProducts", { shop: from });
     },
     getProducts(shopName) {
       return this.$store.state.products[shopName];

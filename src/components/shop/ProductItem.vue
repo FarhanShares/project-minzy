@@ -5,48 +5,46 @@
       :class="isSelected ? 'bg-red-400' : 'bg-white'"
       style="height: 110px"
     />
-    <label class="flex items-center">
-      <input
-        type="checkbox"
-        :name="sku"
-        ref="checkbox"
-        value="true"
-        class="hidden"
-        @change="handleCheckbox"
+    <div class="grid grid-cols-2">
+      <img
+        :src="image"
+        :alt="imageAlt"
+        class="cursor-pointer"
+        @click="$emit('click', id)"
       />
-      <div class="grid grid-cols-2">
-        <img
-          :src="image"
-          :alt="imageAlt"
-          class="cursor-pointer"
-          @click="$emit('click', name, sku)"
-        />
 
-        <div class="grid grid-cols-2 text-xs text-gray-400">
-          <div class="pl-2">
-            <div class="mt-1">{{ name }}</div>
-            <div class="mt-1">{{ model }}</div>
-            <div class="mt-1">{{ sku }}</div>
-            <div class="mt-1">type</div>
-            <div class="mt-1">{{ country }}</div>
-          </div>
-          <div class="pl-2">
-            <div class="mt-1">{{ orderingDate }}</div>
-            <div class="mt-1">{{ deliveryDate }}</div>
-            <div class="mt-1">{{ getDate }}</div>
-            <div class="mt-1">{{ type }}</div>
-            <div class="mt-1">{{ code }}</div>
-          </div>
+      <div class="grid grid-cols-2 text-xs text-gray-400">
+        <div class="pl-2">
+          <div class="mt-1">{{ name }}</div>
+          <div class="mt-1">{{ model }}</div>
+          <div class="mt-1">{{ sku }}</div>
+          <div class="mt-1">type</div>
+          <div class="mt-1">{{ country }}</div>
+        </div>
+        <div class="pl-2">
+          <div class="mt-1">{{ orderingDate }}</div>
+          <div class="mt-1">{{ deliveryDate }}</div>
+          <div class="mt-1">{{ getDate }}</div>
+          <div class="mt-1">{{ type }}</div>
+          <div class="mt-1">{{ code }}</div>
         </div>
       </div>
-    </label>
+    </div>
   </section>
 </template>
 
 <script>
+// import { mapState } from "vuex";
+
 export default {
   name: "ProductItem",
   props: {
+    id: {
+      required: true
+    },
+    shop: {
+      required: true
+    },
     image: {
       default: require("@/assets/img/shop/product-placeholder.png")
     },
@@ -95,18 +93,25 @@ export default {
       default: false
     }
   },
-  data() {
-    return { isSelected: false };
-  },
   computed: {
     getDate() {
       return "3 days left";
+    },
+    // ...mapState({
+    //   isSelected(state) {
+    //     return state.producuts[this.shop].includes(this.id);
+    //   }
+    // })
+    isSelected() {
+      return false;
+      // return this.$stote.state.products[this.shop].includes(this.id);
     }
   },
   methods: {
-    handleCheckbox() {
-      this.isSelected = !this.isSelected;
-      this.$emit("change", this.isSelected);
+    handleChange() {
+      if (this.isSelected) {
+        alert(this.isSelected);
+      }
     }
   }
 };

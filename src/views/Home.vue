@@ -3,7 +3,9 @@
     <app-topbar />
     <app-breadcrumb class="mt-4" @select-all="handleSelection()" />
 
-    {{ getSelectedProducts }}
+    <div class="my-5 text-gray-600 font-xs">
+      Selected Items: {{ getSelectedProducts }}
+    </div>
 
     <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
       <div>

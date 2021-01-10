@@ -78,6 +78,8 @@
         </template>
       </div>
     </section>
+
+    <app-footer />
   </div>
 </template>
 
@@ -85,12 +87,15 @@
 import AppTopbar from "@/components/topbar/AppTopbar.vue";
 import AppBreadcrumb from "@/components/breadcrumb/AppBreadcrumb.vue";
 import ProductItem from "@/components/shop/ProductItem.vue";
+import AppFooter from "@/components/footer/AppFooter";
+
 export default {
   name: "Home",
   components: {
     AppTopbar,
     AppBreadcrumb,
-    ProductItem
+    ProductItem,
+    AppFooter
   },
   data() {
     return {

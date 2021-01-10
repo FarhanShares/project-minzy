@@ -35,7 +35,7 @@
             :sku="item.sku"
             :key="index"
             class="my-3"
-            @click="handleClickingProduct(item, index, 'gow')"
+            @click="handleClickingProduct(item.id, 'gow')"
           />
         </template>
       </div>
@@ -53,7 +53,7 @@
             :sku="item.sku"
             :key="index"
             class="my-3"
-            @click="handleClickingProduct(item, index, 'dow')"
+            @click="handleClickingProduct(item.id, 'dow')"
           />
         </template>
       </div>
@@ -70,7 +70,7 @@
             :sku="item.sku"
             :key="index"
             class="my-3"
-            @click="handleClickingProduct(item, index, 'aows')"
+            @click="handleClickingProduct(item.id, 'aows')"
           />
         </template>
       </div>

@@ -67,6 +67,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    isSelected({ state }, payload) {
+      let shop = state.selected[payload.shop];
+
+      return shop && shop.includes(payload.id);
+    },
     selectAProduct({ commit, state }, payload) {
       let shop = state.selected[payload.shop];
 

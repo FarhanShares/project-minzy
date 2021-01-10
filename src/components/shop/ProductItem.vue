@@ -1,11 +1,16 @@
 <template>
-  <div class="flex items-center">
+  <section class="flex items-center">
+    <div
+      class="w-2 mt-px mr-1 "
+      :class="isSelected ? 'bg-red-400' : 'bg-white'"
+      style="height: 110px"
+    />
     <div class="grid grid-cols-2">
       <img
         :src="image"
         :alt="imageAlt"
         class="cursor-pointer"
-        @click="$emit('click', name, sku)"
+        @click="$emit('click', id)"
       />
 
       <div class="grid grid-cols-2 text-xs text-gray-400">
@@ -25,13 +30,21 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "ProductItem",
   props: {
+    id: {
+      required: true
+    },
+    shop: {
+      required: true
+    },
     image: {
       default: require("@/assets/img/shop/product-placeholder.png")
     },
@@ -83,9 +96,24 @@ export default {
   computed: {
     getDate() {
       return "3 days left";
-    }
+    },
+    ...mapState({
+      isSelected(state) {
+        // console.warn(
+        //   this.id,
+        //   "==>",
+        //   state.selected[this.shop] &&
+        //     state.selected[this.shop].includes(this.id)
+        // );
+        return (
+          state.selected[this.shop] &&
+          state.selected[this.shop].includes(this.id)
+        );
+      }
+    })
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

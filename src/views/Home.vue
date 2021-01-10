@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <app-topbar />
-    <app-breadcrumb class="mt-4" @select-all="handleSelection()" />
+    <app-breadcrumb
+      class="mt-4"
+      @select-all="handleSelection()"
+      @shop-switched="handleSwitchingShop"
+    />
 
     <div class="my-5 text-gray-600 font-xs">
       Selected Items: {{ getSelectedProducts }}
@@ -99,7 +103,8 @@ export default {
   },
   data() {
     return {
-      name: "Farhan Israq"
+      name: "Farhan Israq",
+      currentShopId: "all"
     };
   },
   computed: {
@@ -116,10 +121,10 @@ export default {
     },
     getProducts(shopName) {
       return this.$store.state.products[shopName];
+    },
+    handleSwitchingShop(e) {
+      this.currentShopId = e;
     }
-  },
-  mounted() {
-    // console.warn("ou", this.getProducts("ou"));
   }
 };
 AppTopbar;

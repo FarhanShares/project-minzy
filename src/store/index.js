@@ -49,8 +49,11 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getSelectedProducts: state => {
-      return state.selected.ou;
+    getSelectedProducts: state => (shop = "all") => {
+      if (shop === "all") {
+        return state.selected;
+      }
+      return state.selected[shop] || [];
     }
   },
   mutations: {

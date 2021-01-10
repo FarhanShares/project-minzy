@@ -3,12 +3,13 @@
     <app-topbar />
     <app-breadcrumb class="mt-4" @select-all="selectallp(true)" />
 
+    {{ getSelectedProducts }}
+
     <section class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
       <div>
         <div class="select-all-product" @click="handleSelection('ou')">
           select-all from shop ou
         </div>
-        {{ getSelectedProducts }}
         <template v-for="(item, index) in getProducts('ou')">
           <product-item
             class="my-3"

@@ -92,43 +92,7 @@ export default {
   },
   data() {
     return {
-      shop_ou: [
-        { name: "order-01", sku: "SKU001", selected: false },
-        { name: "order-02", sku: "SKU002", selected: false },
-        { name: "order-03", sku: "SKU003", selected: false },
-        { name: "order-04", sku: "SKU004", selected: false },
-        { name: "order-05", sku: "SKU005", selected: false },
-        { name: "order-06", sku: "SKU006", selected: false },
-        { name: "order-07", sku: "SKU007", selected: false }
-      ],
-      shop_gow: [
-        { name: "name-01", sku: "SKU0001", selected: false },
-        { name: "name-02", sku: "SKU0002", selected: false },
-        { name: "name-03", sku: "SKU0003", selected: false },
-        { name: "name-04", sku: "SKU0004", selected: false },
-        { name: "name-05", sku: "SKU0005", selected: false },
-        { name: "name-06", sku: "SKU0006", selected: false },
-        { name: "name-07", sku: "SKU0007", selected: false }
-      ],
-      shop_dow: [
-        { name: "dow-01", sku: "SKU0031", selected: false },
-        { name: "dow-02", sku: "SKU0032", selected: false },
-        { name: "dow-03", sku: "SKU0033", selected: false },
-        { name: "dow-04", sku: "SKU0034", selected: false },
-        { name: "dow-05", sku: "SKU0035", selected: false },
-        { name: "dow-06", sku: "SKU0036", selected: false },
-        { name: "dow-07", sku: "SKU0037", selected: false }
-      ],
-      shop_aows: [
-        { name: "aows-01", sku: "SKU0011", selected: false },
-        { name: "aows-02", sku: "SKU0012", selected: false },
-        { name: "aows-03", sku: "SKU0013", selected: false },
-        { name: "aows-04", sku: "SKU0014", selected: false },
-        { name: "aows-05", sku: "SKU0015", selected: false },
-        { name: "aows-06", sku: "SKU0016", selected: false },
-        { name: "aows-07", sku: "SKU0017", selected: false }
-      ],
-      selected: []
+      name: "Farhan Israq"
     };
   },
   computed: {

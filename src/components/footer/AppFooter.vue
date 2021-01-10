@@ -13,12 +13,29 @@
         />
       </div>
     </div>
+
+    <div>
+      |
+    </div>
+
     <div class="flex items-center">
       <div>sync online</div>
       <img src="@/assets/icon/icon-2.png" alt="icon-2" class="w-12 h-12 ml-2" />
     </div>
+
+    <div>
+      |
+    </div>
+
     <div class="flex items-center">
-      fix order <input type="search" name="" id="" />
+      <div>fix order</div>
+      <input
+        type="search"
+        name=""
+        id=""
+        placeholder="search order no"
+        class="px-2 py-1 ml-2 text-sm placeholder-gray-300 border-b border-gray-300 outline-none focus:outline-none"
+      />
     </div>
   </div>
 </template>

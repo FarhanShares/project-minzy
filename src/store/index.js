@@ -68,16 +68,31 @@ export default new Vuex.Store({
         if (index !== -1) shop.splice(index, 1);
       }
     },
-    SELECT_ALL_PRODUCTS(state) {
-      for (const [shop, products] of Object.entries(state.products)) {
-        products.forEach(item => {
-          // console.log(item.id);
-          state.selected[shop].push(item.id);
-        });
-        state.selectedAll.all = true;
-        // console.log(shop);
-        // console.log(products);
-        // console.table(state.selected[shop]);
+    SELECT_ALL_PRODUCTS(state, payload) {
+      if (payload.shop === "all") {
+        // select from all shops
+        let getProducts = state.products;
+
+        for (const [shop, products] of Object.entries(getProducts)) {
+          products.forEach(item => {
+            // console.log(item.id);
+            state.selected[shop].push(item.id);
+          });
+          state.selectedAll.all = true;
+          // console.log(shop);
+          // console.log(products);
+          // console.table(state.selected[shop]);
+        }
+      } else {
+        // select from a specific shop
+        let getProducts = state.products[payload.shop] || {};
+
+        for (const products of Object.entries(getProducts)) {
+          products.forEach(item => {
+            state.selected[payload.shop].push(item.id);
+          });
+          state.selectedAll[payload.shop] = true;
+        }
       }
     },
     DESELECT_ALL_PRODUCTS(state) {

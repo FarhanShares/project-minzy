@@ -91,7 +91,7 @@ export default new Vuex.Store({
         for (const [shop] of Object.entries(state.products)) {
           state.selected[shop] = [];
         }
-        state.selectedAll.all = true;
+        state.selectedAll.all = false;
 
         // select the specific shop products
         let getProducts = state.products[payload.shop] || [];

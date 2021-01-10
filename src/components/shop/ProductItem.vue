@@ -99,12 +99,12 @@ export default {
     },
     ...mapState({
       isSelected(state) {
-        console.warn(
-          this.id,
-          "==>",
-          state.selected[this.shop] &&
-            state.selected[this.shop].includes(this.id)
-        );
+        // console.warn(
+        //   this.id,
+        //   "==>",
+        //   state.selected[this.shop] &&
+        //     state.selected[this.shop].includes(this.id)
+        // );
         return (
           state.selected[this.shop] &&
           state.selected[this.shop].includes(this.id)

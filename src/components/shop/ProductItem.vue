@@ -13,7 +13,7 @@
           class="cursor-pointer"
           @click="$emit('click', id)"
         />
-        <div class="hover-container">
+        <div class="hover-container" v-if="readMore">
           read more
         </div>
       </div>
@@ -93,9 +93,9 @@ export default {
       type: [String, Number],
       default: "R61618MJ768"
     },
-    hasMessage: {
-      type: Boolean,
-      default: false
+    readMore: {
+      type: [String, Number],
+      required: false
     }
   },
   computed: {

@@ -6,12 +6,17 @@
       style="height: 110px"
     />
     <div class="grid grid-cols-2">
-      <img
-        :src="image"
-        :alt="imageAlt"
-        class="cursor-pointer"
-        @click="$emit('click', id)"
-      />
+      <div class="image-container">
+        <img
+          :src="image"
+          :alt="imageAlt"
+          class="cursor-pointer"
+          @click="$emit('click', id)"
+        />
+        <div class="hover-container" v-if="readMore">
+          read more
+        </div>
+      </div>
 
       <div class="grid grid-cols-2 text-xs text-gray-400">
         <div class="pl-2">
@@ -88,9 +93,10 @@ export default {
       type: [String, Number],
       default: "R61618MJ768"
     },
-    hasMessage: {
-      type: Boolean,
-      default: false
+    readMore: {
+      type: [String, Number],
+      required: false,
+      default: "url"
     }
   },
   computed: {
@@ -116,4 +122,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.image-container {
+  height: 110px;
+  width: 200px;
+  position: relative;
+
+  & .hover-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+    width: 180px;
+    padding: 10px 3px;
+    background-color: #ffc300;
+    &:hover {
+      visibility: visible;
+    }
+  }
+
+  &:hover .hover-container {
+    visibility: visible;
+  }
+}
 </style>

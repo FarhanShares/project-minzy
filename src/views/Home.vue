@@ -149,7 +149,8 @@ export default {
     return {
       name: "Farhan Israq",
       currentShopId: "all",
-      currentPageId: "labels"
+      currentPageId: "labels",
+      shops: ["ou", "gow", "dow", "awos"]
     };
   },
   computed: {

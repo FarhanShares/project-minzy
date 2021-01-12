@@ -58,60 +58,6 @@
             />
           </template>
         </div>
-
-        <!-- <div>
-          <div class="select-all-product" @click="handleSelection('gow')">
-            select-all from shop gow
-          </div>
-
-          <template v-for="(item, index) in getProducts('gow')">
-            <product-item
-              :key="index"
-              :id="item.id"
-              :shop="`gow`"
-              :name="item.ea_title"
-              :sku="item.ea_sku"
-              :country="item.ea_country"
-              class="my-3"
-              @click="handleClickingProduct(item.id, 'gow')"
-            />
-          </template>
-        </div>
-
-        <div>
-          <div class="select-all-product" @click="handleSelection('dow')">
-            select-all from shop dow
-          </div>
-
-          <template v-for="(item, index) in getProducts('dow')">
-            <product-item
-              :id="item.id"
-              :shop="`dow`"
-              :name="item.name"
-              :sku="item.sku"
-              :key="index"
-              class="my-3"
-              @click="handleClickingProduct(item.id, 'dow')"
-            />
-          </template>
-        </div>
-
-        <div>
-          <div class="select-all-product" @click="handleSelection('aows')">
-            select-all from shop aows
-          </div>
-          <template v-for="(item, index) in getProducts('aows')">
-            <product-item
-              :id="item.id"
-              :shop="`aows`"
-              :name="item.name"
-              :sku="item.sku"
-              :key="index"
-              class="my-3"
-              @click="handleClickingProduct(item.id, 'aows')"
-            />
-          </template>
-        </div> -->
       </section>
     </template>
 

@@ -98,6 +98,8 @@ import PageWorld from "@/views/PageWorld";
 
 import OuConfig from "@/config/ouConfig";
 
+import emitter from "@/services/emitter";
+
 export default {
   name: "Home",
   components: {
@@ -128,6 +130,8 @@ export default {
     }
   },
   created() {
+    emitter.emit("foo", { a: "b" });
+
     // Get products from shop ou
     this.$ou
       .get(OuConfig.api.orders.index)
@@ -157,6 +161,9 @@ export default {
       .catch(err => {
         console.warn(err);
       });
+  },
+  mounted() {
+    emitter.on("foo", e => console.log("fooData", e));
   },
   methods: {
     handleClickingProduct(item, shop) {

@@ -24,8 +24,9 @@
               class="my-3"
               :id="item.id"
               :shop="currentShopId"
-              :name="item.name"
-              :sku="item.sku"
+              :name="item.title"
+              :sku="item.ea_sku"
+              :country="item.ea_country"
               :key="index"
               @click="handleClickingProduct(item.id, currentShopId)"
             />
@@ -44,11 +45,12 @@
           <template v-for="(item, index) in getProducts('ou')">
             <product-item
               class="my-3"
+              :key="index"
               :id="item.id"
               :shop="`ou`"
-              :name="item.name"
-              :sku="item.sku"
-              :key="index"
+              :name="item.ea_title"
+              :sku="item.ea_sku"
+              :country="item.ea_country"
               @click="handleClickingProduct(item.id, 'ou')"
             />
           </template>
@@ -61,11 +63,12 @@
 
           <template v-for="(item, index) in getProducts('gow')">
             <product-item
+              :key="index"
               :id="item.id"
               :shop="`gow`"
-              :name="item.name"
-              :sku="item.sku"
-              :key="index"
+              :name="item.ea_title"
+              :sku="item.ea_sku"
+              :country="item.ea_country"
               class="my-3"
               @click="handleClickingProduct(item.id, 'gow')"
             />

@@ -157,14 +157,14 @@ export default {
   created() {
     // Get products from shop ou
     this.$ou
-      .get(OuConfig.api.transactions.index)
+      .get(OuConfig.api.orders.index)
       .then(res => {
         this.$store.dispatch("addProductsToShop", {
           shop: "ou",
           products: res.data,
           reset: true
         });
-        // console.warn("ou=>", res.data);
+        console.warn("ou=>", res.data);
       })
       .catch(err => {
         console.warn(err);
@@ -172,14 +172,14 @@ export default {
 
     // Get products from shop gow
     this.$gow
-      .get(OuConfig.api.transactions.index)
+      .get(OuConfig.api.orders.index)
       .then(res => {
         this.$store.dispatch("addProductsToShop", {
           shop: "gow",
           products: res.data,
           reset: true
         });
-        // console.warn("gow=>", res.data);
+        console.warn("gow=>", res.data);
       })
       .catch(err => {
         console.warn(err);

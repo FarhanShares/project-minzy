@@ -54,7 +54,7 @@
               :name="item.ea_title"
               :sku="item.ea_sku"
               :country="item.ea_country"
-              @click="handleClickingProduct(item.id, shop)"
+              @click="handleClickingProduct(item.id, shopId)"
             />
           </template>
         </div>

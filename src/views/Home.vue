@@ -8,15 +8,23 @@
       @page-changed="handleChangingPage"
     />
 
-    <div class="my-5 text-gray-600 font-xs">
-      Selected Items: {{ getSelectedProducts }}
-      <br />
-      Is anything selected:
-      {{ isAnythingSelected ? "Yes" : "No" }}
-      <br />
-      Total selected items:
-      {{ getSelectionCount }}
-    </div>
+    <section class="flex justify-between">
+      <div class="my-5 text-gray-600 font-xs">
+        Selected Items: {{ getSelectedProducts }}
+        <br />
+        Is anything selected:
+        {{ isAnythingSelected ? "Yes" : "No" }}
+        <br />
+        Total selected items:
+        {{ getSelectionCount }}
+      </div>
+
+      <div>
+        <t-button variant="warning" v-if="isAnythingSelected"
+          >Generate packing label</t-button
+        >
+      </div>
+    </section>
 
     <template v-if="currentPageId === 'labels'">
       <section v-if="currentShopId !== 'all'">

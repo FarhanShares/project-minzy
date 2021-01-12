@@ -130,6 +130,8 @@ import AppFooter from "@/components/footer/AppFooter";
 import PageEurope from "@/views/PageEurope";
 import PageWorld from "@/views/PageWorld";
 
+import OuConfig from "@/config/ouConfig";
+
 export default {
   name: "Home",
   components: {
@@ -151,6 +153,37 @@ export default {
     getSelectedProducts() {
       return this.$store.getters.getSelectedProducts("all");
     }
+  },
+  created() {
+    // Get products from shop ou
+    this.$ou
+      .get(OuConfig.api.transactions.index)
+      .then(res => {
+        this.$store.dispatch("addProductsToShop", {
+          shop: "ou",
+          products: res.data,
+          reset: true
+        });
+        // console.warn("ou=>", res.data);
+      })
+      .catch(err => {
+        console.warn(err);
+      });
+
+    // Get products from shop gow
+    this.$gow
+      .get(OuConfig.api.transactions.index)
+      .then(res => {
+        this.$store.dispatch("addProductsToShop", {
+          shop: "gow",
+          products: res.data,
+          reset: true
+        });
+        // console.warn("gow=>", res.data);
+      })
+      .catch(err => {
+        console.warn(err);
+      });
   },
   methods: {
     handleClickingProduct(item, shop) {

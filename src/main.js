@@ -15,6 +15,10 @@ import ou from "@/services/ou";
 // eslint-disable-next-line
 import gow from "@/services/gow";
 
+import VueTailwind from "vue-tailwind";
+import vueTailwindTheme from "@/config/vueTailwindTheme";
+Vue.use(VueTailwind, vueTailwindTheme);
+
 new Vue({
   router,
   store,

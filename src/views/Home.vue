@@ -20,7 +20,10 @@
       </div>
 
       <div>
-        <t-button variant="warning" v-if="isAnythingSelected"
+        <t-button
+          variant="warning"
+          @click="$modal.show('labels-popup')"
+          v-if="isAnythingSelected"
           >Generate packing label</t-button
         >
       </div>
@@ -84,6 +87,8 @@
     </template>
 
     <app-footer />
+
+    <labels-popup />
   </div>
 </template>
 
@@ -99,6 +104,7 @@ import PageWorld from "@/views/PageWorld";
 import OuConfig from "@/config/ouConfig";
 
 import emitter from "@/services/emitter";
+import LabelsPopup from "./labels/LabelsPopup.vue";
 
 export default {
   name: "Home",
@@ -108,7 +114,8 @@ export default {
     ProductItem,
     AppFooter,
     PageEurope,
-    PageWorld
+    PageWorld,
+    LabelsPopup
   },
   data() {
     return {

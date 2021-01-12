@@ -38,11 +38,14 @@
         v-if="currentShopId === 'all'"
         class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8"
       >
-        <div>
+        <div
+          v-for="(shop, shopIndex) in shops"
+          :key="`shop-id-${shop}-${shopIndex}`"
+        >
           <div class="select-all-product" @click="handleSelection('ou')">
-            select-all from shop ou
+            select-all from shop {{ shop }}
           </div>
-          <template v-for="(item, index) in getProducts('ou')">
+          <template v-for="(item, index) in getProducts(shop)">
             <product-item
               class="my-3"
               :key="index"
@@ -56,7 +59,7 @@
           </template>
         </div>
 
-        <div>
+        <!-- <div>
           <div class="select-all-product" @click="handleSelection('gow')">
             select-all from shop gow
           </div>
@@ -108,7 +111,7 @@
               @click="handleClickingProduct(item.id, 'aows')"
             />
           </template>
-        </div>
+        </div> -->
       </section>
     </template>
 
@@ -150,7 +153,7 @@ export default {
       name: "Farhan Israq",
       currentShopId: "all",
       currentPageId: "labels",
-      shops: ["ou", "gow", "dow", "awos"]
+      shops: ["ou", "gow", "dow", "aows"]
     };
   },
   computed: {

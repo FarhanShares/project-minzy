@@ -118,6 +118,14 @@ export default new Vuex.Store({
         state.selectedAll[payload.shop] = false;
         state.selectedAll.all = false;
       }
+    },
+    // payload : { shop: "id", products: [], reset: false}
+    ADD_PRODUCTS_TO_SHOP(state, payload) {
+      if (payload.reset) {
+        state.products[payload.shop] = [];
+      }
+
+      state.products[payload.shop] = [...payload.products];
     }
   },
   actions: {
@@ -141,6 +149,9 @@ export default new Vuex.Store({
       } else {
         commit("SELECT_ALL_PRODUCTS", payload);
       }
+    },
+    addProductsToShop({ commit }, payload) {
+      commit("ADD_PRODUCTS_TO_SHOP", payload);
     }
   },
   modules: {}

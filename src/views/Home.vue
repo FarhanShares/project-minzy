@@ -24,8 +24,9 @@
               class="my-3"
               :id="item.id"
               :shop="currentShopId"
-              :name="item.name"
-              :sku="item.sku"
+              :name="item.title"
+              :sku="item.ea_sku"
+              :country="item.ea_country"
               :key="index"
               @click="handleClickingProduct(item.id, currentShopId)"
             />
@@ -44,11 +45,12 @@
           <template v-for="(item, index) in getProducts('ou')">
             <product-item
               class="my-3"
+              :key="index"
               :id="item.id"
               :shop="`ou`"
-              :name="item.name"
-              :sku="item.sku"
-              :key="index"
+              :name="item.ea_title"
+              :sku="item.ea_sku"
+              :country="item.ea_country"
               @click="handleClickingProduct(item.id, 'ou')"
             />
           </template>
@@ -61,11 +63,12 @@
 
           <template v-for="(item, index) in getProducts('gow')">
             <product-item
+              :key="index"
               :id="item.id"
               :shop="`gow`"
-              :name="item.name"
-              :sku="item.sku"
-              :key="index"
+              :name="item.ea_title"
+              :sku="item.ea_sku"
+              :country="item.ea_country"
               class="my-3"
               @click="handleClickingProduct(item.id, 'gow')"
             />
@@ -130,6 +133,8 @@ import AppFooter from "@/components/footer/AppFooter";
 import PageEurope from "@/views/PageEurope";
 import PageWorld from "@/views/PageWorld";
 
+import OuConfig from "@/config/ouConfig";
+
 export default {
   name: "Home",
   components: {
@@ -151,6 +156,37 @@ export default {
     getSelectedProducts() {
       return this.$store.getters.getSelectedProducts("all");
     }
+  },
+  created() {
+    // Get products from shop ou
+    this.$ou
+      .get(OuConfig.api.orders.index)
+      .then(res => {
+        this.$store.dispatch("addProductsToShop", {
+          shop: "ou",
+          products: res.data,
+          reset: true
+        });
+        console.warn("ou=>", res.data);
+      })
+      .catch(err => {
+        console.warn(err);
+      });
+
+    // Get products from shop gow
+    this.$gow
+      .get(OuConfig.api.orders.index)
+      .then(res => {
+        this.$store.dispatch("addProductsToShop", {
+          shop: "gow",
+          products: res.data,
+          reset: true
+        });
+        console.warn("gow=>", res.data);
+      })
+      .catch(err => {
+        console.warn(err);
+      });
   },
   methods: {
     handleClickingProduct(item, shop) {

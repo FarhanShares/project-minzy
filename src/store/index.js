@@ -54,6 +54,13 @@ export default new Vuex.Store({
         return state.selected;
       }
       return state.selected[shop] || [];
+    },
+    getSelectionCount: state => {
+      let ids = Object.keys(state.selected).reduce(function(r, k) {
+        return r.concat(state.selected[k]);
+      }, []);
+      console.warn(ids);
+      return ids.length;
     }
   },
   mutations: {

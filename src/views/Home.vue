@@ -39,22 +39,22 @@
         class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8"
       >
         <div
-          v-for="(shop, shopIndex) in shops"
-          :key="`shop-id-${shop}-${shopIndex}`"
+          v-for="(shopId, shopIndex) in shops"
+          :key="`shop-id-${shopId}-${shopIndex}`"
         >
-          <div class="select-all-product" @click="handleSelection('ou')">
-            select-all from shop {{ shop }}
+          <div class="select-all-product" @click="handleSelection(shopId)">
+            select-all from shop {{ shopId }}
           </div>
-          <template v-for="(item, index) in getProducts(shop)">
+          <template v-for="(item, index) in getProducts(shopId)">
             <product-item
               class="my-3"
               :key="index"
               :id="item.id"
-              :shop="`ou`"
+              :shop="shopId"
               :name="item.ea_title"
               :sku="item.ea_sku"
               :country="item.ea_country"
-              @click="handleClickingProduct(item.id, 'ou')"
+              @click="handleClickingProduct(item.id, shop)"
             />
           </template>
         </div>

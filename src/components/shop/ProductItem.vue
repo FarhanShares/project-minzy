@@ -95,8 +95,7 @@ export default {
     },
     readMore: {
       type: [String, Number],
-      required: false,
-      default: "url"
+      required: false
     }
   },
   computed: {

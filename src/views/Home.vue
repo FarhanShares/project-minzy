@@ -10,7 +10,12 @@
 
     <div class="my-5 text-gray-600 font-xs">
       Selected Items: {{ getSelectedProducts }}
+      <br />
+      Is anything selected:
       {{ isAnythingSelected ? "Yes" : "No" }}
+      <br />
+      Total selected items:
+      {{ getSelectionCount }}
     </div>
 
     <template v-if="currentPageId === 'labels'">
@@ -106,6 +111,9 @@ export default {
   computed: {
     getSelectedProducts() {
       return this.$store.getters.getSelectedProducts("all");
+    },
+    getSelectionCount() {
+      return this.$store.getters.getSelectionCount;
     },
     isAnythingSelected() {
       return this.$store.getters.getSelectionCount > 0;

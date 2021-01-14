@@ -19,6 +19,13 @@ import VueTailwind from "vue-tailwind";
 import vueTailwindTheme from "@/config/vue-tailwind.config";
 Vue.use(VueTailwind, vueTailwindTheme);
 
+import VueProgressBar from "vue-progressbar";
+Vue.use(VueProgressBar, {
+  color: "rgb(143, 255, 199)",
+  failedColor: "red",
+  height: "2px"
+});
+
 new Vue({
   router,
   store,

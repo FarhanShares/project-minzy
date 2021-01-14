@@ -15,8 +15,15 @@
 </template>
 
 <script>
+import emitter from "@/services/emitter.service";
+
 export default {
-  name: "LabelsPopup"
+  name: "LabelsPopup",
+  mounted() {
+    emitter.on("labels-data", e => {
+      console.warn(e);
+    });
+  }
 };
 </script>
 

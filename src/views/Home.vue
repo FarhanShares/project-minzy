@@ -211,15 +211,20 @@ export default {
         ]);
 
         console.warn(package_create);
-
+        this.$Progress.start();
         await this.$http
           .post("/packages", package_create)
           .then(res => {
             console.warn("pkg_cr=", res);
             emitter.emit("labels-data", res);
+            this.$Progress.finish();
           })
           .then(err => {
             console.warn("pkg_e", err);
+            this.$Progress.fail();
+          })
+          .finally(() => {
+            this.$Progress.finish();
           });
 
         this.$modal.show("labels-popup");

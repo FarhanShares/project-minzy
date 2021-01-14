@@ -9,14 +9,14 @@ Vue.config.productionTip = false;
 // Services
 
 // eslint-disable-next-line
-import http from "@/services/http";
+import http from "@/services/http.service";
 // eslint-disable-next-line
 import ou from "@/services/ou.service";
 // eslint-disable-next-line
 import gow from "@/services/gow.service";
 
 import VueTailwind from "vue-tailwind";
-import vueTailwindTheme from "@/config/vueTailwindTheme";
+import vueTailwindTheme from "@/config/vue-tailwind.config";
 Vue.use(VueTailwind, vueTailwindTheme);
 
 new Vue({

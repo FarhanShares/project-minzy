@@ -4,6 +4,6 @@ import GowConfig from "@/config/gow.config";
 
 Vue.prototype.$gow = Axios.create({
   baseURL: GowConfig.api.baseURL,
-  timeout: 1000,
+  timeout: 30000,
   headers: GowConfig.commonHeaders
 });

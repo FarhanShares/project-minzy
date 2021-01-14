@@ -4,7 +4,7 @@ import ApiConfig from "@/config/api.config";
 
 Vue.prototype.$http = Axios.create({
   baseURL: ApiConfig.baseURL,
-  timeout: 1000,
+  timeout: 30000,
   headers: ApiConfig.commonHeaders
 });
 

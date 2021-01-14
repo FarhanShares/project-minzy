@@ -4,6 +4,6 @@ import OuConfig from "@/config/ou.config";
 
 Vue.prototype.$ou = Axios.create({
   baseURL: OuConfig.api.baseURL,
-  timeout: 1000,
+  timeout: 30000,
   headers: OuConfig.commonHeaders
 });

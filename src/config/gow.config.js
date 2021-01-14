@@ -7,7 +7,7 @@ export default {
     orders: {
       index: "/receipts"
     },
-    transactions: {
+    products: {
       index: "/transactions"
     }
   },

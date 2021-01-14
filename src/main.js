@@ -26,6 +26,10 @@ Vue.use(VueProgressBar, {
   height: "2px"
 });
 
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+Vue.use(Loading);
+
 new Vue({
   router,
   store,

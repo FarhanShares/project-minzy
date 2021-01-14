@@ -28,7 +28,13 @@ Vue.use(VueProgressBar, {
 
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
-Vue.use(Loading);
+Vue.use(Loading, {
+  // props
+  color: "white",
+  isFullPage: false,
+  opacity: 0,
+  blur: null
+});
 
 new Vue({
   router,

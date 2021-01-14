@@ -101,12 +101,12 @@ import AppFooter from "@/components/footer/AppFooter";
 import PageEurope from "@/views/PageEurope";
 import PageWorld from "@/views/PageWorld";
 
-import OuConfig from "@/config/ouConfig";
+import OuConfig from "@/config/ou.config";
 
-import emitter from "@/services/emitter";
+import emitter from "@/services/emitter.service";
 import LabelsPopup from "./labels/LabelsPopup.vue";
 
-import { dummyUser } from "@/services/dummy";
+import { dummyUser } from "@/services/dummy.service";
 
 export default {
   name: "Home",

@@ -139,6 +139,7 @@ export default {
     }
   },
   created() {
+    this.$Progress.start();
     emitter.emit("foo", { a: "b" });
 
     // Get products from shop ou
@@ -170,6 +171,8 @@ export default {
       .catch(err => {
         console.warn(err);
       });
+
+    this.$Progress.finish();
   },
   mounted() {
     emitter.on("foo", e => console.log("fooData", e));

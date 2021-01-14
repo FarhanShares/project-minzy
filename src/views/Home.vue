@@ -22,7 +22,7 @@
       <div>
         <t-button
           variant="warning"
-          @click="$modal.show('labels-popup')"
+          @click="handleGeneration('label')"
           v-if="isAnythingSelected"
           >Generate packing label</t-button
         >
@@ -106,6 +106,8 @@ import OuConfig from "@/config/ouConfig";
 import emitter from "@/services/emitter";
 import LabelsPopup from "./labels/LabelsPopup.vue";
 
+import { dummyUser } from "@/services/dummy";
+
 export default {
   name: "Home",
   components: {
@@ -187,6 +189,38 @@ export default {
     },
     handleChangingPage(e) {
       this.currentPageId = e;
+    },
+    async handleGeneration(type) {
+      if (type === "label") {
+        let package_create = dummyUser([
+          {
+            name: "Test Product 01",
+            value: 1,
+            weight: 100,
+            quantity: 1
+          },
+          {
+            name: "Test Product 02",
+            value: 1,
+            weight: 100,
+            quantity: 5
+          }
+        ]);
+
+        console.warn(package_create);
+
+        await this.$http
+          .post("/packages", package_create)
+          .then(res => {
+            console.warn("pkg_cr=", res);
+            emitter.emit("labels-data", res);
+          })
+          .then(err => {
+            console.warn("pkg_e", err);
+          });
+
+        this.$modal.show("labels-popup");
+      }
     }
   }
 };

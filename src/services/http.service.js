@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Axios from "axios";
-import ApiConfig from "@/config/apiConfig";
+import ApiConfig from "@/config/api.config";
 
 Vue.prototype.$http = Axios.create({
   baseURL: ApiConfig.baseURL,
-  timeout: 60,
+  timeout: 1000,
   headers: ApiConfig.commonHeaders
 });
 

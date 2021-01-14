@@ -11,9 +11,9 @@ Vue.config.productionTip = false;
 // eslint-disable-next-line
 import http from "@/services/http";
 // eslint-disable-next-line
-import ou from "@/services/ou";
+import ou from "@/services/ou.service";
 // eslint-disable-next-line
-import gow from "@/services/gow";
+import gow from "@/services/gow.service";
 
 import VueTailwind from "vue-tailwind";
 import vueTailwindTheme from "@/config/vueTailwindTheme";

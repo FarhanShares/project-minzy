@@ -1,4 +1,4 @@
-import ApiConfig from "@/config/apiConfig";
+import ApiConfig from "@/config/api.config";
 
 export default {
   api: {
@@ -10,5 +10,8 @@ export default {
     transactions: {
       index: "/transactions"
     }
+  },
+  events: {
+    labelsPopup: "labels-popup"
   }
 };

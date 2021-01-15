@@ -106,7 +106,10 @@ import OuConfig from "@/config/ou.config";
 import emitter from "@/services/emitter.service";
 import LabelsPopup from "./labels/LabelsPopup.vue";
 
-import { createPackageJson } from "@/services/data-model.service";
+import {
+  createPackageJson,
+  shippingDocumentJson
+} from "@/services/data-model.service";
 
 export default {
   name: "Home",
@@ -207,11 +210,22 @@ export default {
 
         await this.$http
           .post("/packages", package_create)
-          .then(res => {
-            console.warn("pkg_cr=", res.data);
+          .then(async res => {
+            // let pkg_docs = res.data.documents;
+            let popup = {};
 
-            emitter.emit("labels-data", res.data);
-            this.$modal.show("labels-popup");
+            let pkg = res.data;
+            let pkg_id = res.data.packageId;
+            let pkg_barcodes = res.data.addressBarcodes;
+
+            await this.$http
+              .post("/documents", shippingDocumentJson(pkg_id, pkg_barcodes[0]))
+              .then(res => {
+                popup = { pkg: pkg, docs: res.data };
+                emitter.emit("labels-data", popup);
+
+                this.$modal.show("labels-popup");
+              });
 
             this.$Progress.finish();
           })

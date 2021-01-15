@@ -9,7 +9,9 @@
     /> -->
 
     <div class="flex items-center justify-center h-96">
-      Click here to view Orders
+      <router-link :to="{ name: 'Orders' }">
+        Visit Orders Page
+      </router-link>
     </div>
 
     <app-footer />

@@ -211,17 +211,18 @@ export default {
             console.warn("pkg_cr=", res.data);
 
             emitter.emit("labels-data", res.data);
-
             this.$modal.show("labels-popup");
 
             this.$Progress.finish();
           })
           .then(err => {
-            console.warn("pkg_er", err.data);
+            if (err) {
+              console.warn("pkg_er", err);
 
-            this.$Progress.fail();
+              this.$Progress.fail();
 
-            alert("failed to create package");
+              alert("failed to create package");
+            }
           })
           .finally(() => {
             this.$Progress.finish();

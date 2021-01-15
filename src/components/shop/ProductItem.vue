@@ -111,8 +111,8 @@ export default {
         //     state.selected[this.shop].includes(this.id)
         // );
         return (
-          state.selected[this.shop] &&
-          state.selected[this.shop].includes(this.id)
+          state["order"].selected[this.shop] &&
+          state["order"].selected[this.shop].includes(this.id)
         );
       }
     })

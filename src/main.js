@@ -36,6 +36,9 @@ Vue.use(Loading, {
   blur: null
 });
 
+import SpinnerSkeleton from "@/components/skeleton/SpinnerSkeleton";
+Vue.component(SpinnerSkeleton);
+
 new Vue({
   router,
   store,

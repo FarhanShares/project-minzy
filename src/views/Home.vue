@@ -12,6 +12,10 @@
       <router-link :to="{ name: 'Orders' }">
         Visit Orders Page
       </router-link>
+      <br />
+      <router-link :to="{ name: 'Products' }">
+        Visit Products Page
+      </router-link>
     </div>
 
     <app-footer />

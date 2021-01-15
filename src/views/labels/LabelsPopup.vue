@@ -1,13 +1,13 @@
 <template>
-  <t-modal header="Title of the modal" name="labels-popup">
-    Content of the modal.
+  <t-modal header="print labels" name="labels-popup" ref="popup">
+    get tracking codes
     <template v-slot:footer>
       <div class="flex justify-between">
-        <t-button type="button">
-          Cancel
+        <t-button type="button" @click="$refs.popup.hide()">
+          cancel
         </t-button>
         <t-button type="button">
-          Ok
+          print labels
         </t-button>
       </div>
     </template>

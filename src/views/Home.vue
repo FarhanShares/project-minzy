@@ -37,7 +37,7 @@
 
         <div class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
           <template v-for="(item, index) in getProducts(currentShopId)">
-            <product-item
+            <order-item
               class="my-3"
               :id="item.id"
               :shop="currentShopId"
@@ -63,7 +63,7 @@
             select-all from shop {{ shopId }}
           </div>
           <template v-for="(item, index) in getProducts(shopId)">
-            <product-item
+            <order-item
               class="my-3"
               :key="index"
               :id="item.id"
@@ -95,7 +95,7 @@
 <script>
 import AppTopbar from "@/components/topbar/AppTopbar.vue";
 import AppBreadcrumb from "@/components/breadcrumb/AppBreadcrumb.vue";
-import ProductItem from "@/components/shop/ProductItem.vue";
+import OrderItem from "@/components/shop/OrderItem.vue";
 import AppFooter from "@/components/footer/AppFooter";
 
 import PageEurope from "@/views/PageEurope";
@@ -114,7 +114,7 @@ export default {
   components: {
     AppTopbar,
     AppBreadcrumb,
-    ProductItem,
+    OrderItem,
     AppFooter,
     PageEurope,
     PageWorld,

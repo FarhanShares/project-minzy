@@ -200,39 +200,32 @@ export default {
     },
     async handleGeneration(type) {
       if (type === "label") {
-        let package_create = createPackageJson([
-          {
-            name: "Test Product 01",
-            value: 1,
-            weight: 100,
-            quantity: 1
-          },
-          {
-            name: "Test Product 02",
-            value: 1,
-            weight: 100,
-            quantity: 5
-          }
-        ]);
-
+        let package_create = createPackageJson();
         console.warn(package_create);
+
         this.$Progress.start();
+
         await this.$http
           .post("/packages", package_create)
           .then(res => {
-            console.warn("pkg_cr=", res);
-            emitter.emit("labels-data", res);
+            console.warn("pkg_cr=", res.data);
+
+            emitter.emit("labels-data", res.data);
+
+            this.$modal.show("labels-popup");
+
             this.$Progress.finish();
           })
           .then(err => {
-            console.warn("pkg_e", err);
+            console.warn("pkg_er", err.data);
+
             this.$Progress.fail();
+
+            alert("failed to create package");
           })
           .finally(() => {
             this.$Progress.finish();
           });
-
-        this.$modal.show("labels-popup");
       }
     }
   }

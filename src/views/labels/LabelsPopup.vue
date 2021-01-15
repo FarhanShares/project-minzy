@@ -1,6 +1,8 @@
 <template>
   <t-modal header="print labels" name="labels-popup" ref="popup">
-    get tracking codes
+    tracking codes
+    <br />
+    package name:
     <template v-slot:footer>
       <div class="flex justify-between">
         <t-button type="button" @click="$refs.popup.hide()">
@@ -19,6 +21,12 @@ import emitter from "@/services/emitter.service";
 
 export default {
   name: "LabelsPopup",
+  data() {
+    return {
+      pkg: null,
+      docs: null
+    };
+  },
   mounted() {
     emitter.on("labels-data", e => {
       console.warn(e);

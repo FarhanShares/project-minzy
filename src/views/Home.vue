@@ -110,6 +110,7 @@ import { dummyUser } from "@/services/dummy.service";
 
 export default {
   name: "Home",
+
   components: {
     AppTopbar,
     AppBreadcrumb,
@@ -119,6 +120,7 @@ export default {
     PageWorld,
     LabelsPopup
   },
+
   data() {
     return {
       name: "Farhan Israq",
@@ -127,6 +129,7 @@ export default {
       shops: ["ou", "gow", "dow", "aows"]
     };
   },
+
   computed: {
     getSelectedProducts() {
       return this.$store.getters.getSelectedProducts("all");
@@ -138,6 +141,7 @@ export default {
       return this.$store.getters.getSelectionCount > 0;
     }
   },
+
   created() {
     this.$Progress.start();
 
@@ -173,7 +177,9 @@ export default {
 
     this.$Progress.finish();
   },
+
   mounted() {},
+
   methods: {
     handleClickingProduct(item, shop) {
       this.$store.dispatch("selectAProduct", { id: item, shop });

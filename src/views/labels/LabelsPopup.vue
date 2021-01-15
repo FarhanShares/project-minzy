@@ -42,7 +42,8 @@ export default {
         code: null,
         message: null,
         link: null
-      }
+      },
+      refetch: false
     };
   },
   mounted() {
@@ -59,6 +60,7 @@ export default {
   },
   methods: {
     async fetchDocument() {
+      this.refetch = true;
       await this.$http
         .post(
           "/documents",
@@ -67,7 +69,15 @@ export default {
         .then(res => {
           console.log(res.data);
           this.docs = res.data;
+          this.refetch = false;
         });
+    },
+    handlePrint() {
+      if (this.docs.link) {
+        window.open(this.docs.link);
+      } else {
+        alert("please fetch again");
+      }
     }
   }
 };

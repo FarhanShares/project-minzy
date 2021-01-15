@@ -106,7 +106,7 @@ import OuConfig from "@/config/ou.config";
 import emitter from "@/services/emitter.service";
 import LabelsPopup from "./labels/LabelsPopup.vue";
 
-import { dummyUser } from "@/services/dummy.service";
+import { createPackageJson } from "@/services/data-model.service";
 
 export default {
   name: "Home",
@@ -198,7 +198,7 @@ export default {
     },
     async handleGeneration(type) {
       if (type === "label") {
-        let package_create = dummyUser([
+        let package_create = createPackageJson([
           {
             name: "Test Product 01",
             value: 1,

@@ -8,10 +8,18 @@
       @page-changed="handleChangingPage"
     /> -->
 
-    <div class="flex items-center justify-center h-96">
-      <router-link :to="{ name: 'Orders' }">
-        Visit Orders Page
-      </router-link>
+    <div class="flex flex-col items-center justify-center h-96">
+      <div class="my-1">
+        <router-link :to="{ name: 'Orders' }">
+          Visit Orders Page
+        </router-link>
+      </div>
+
+      <div class="my-1">
+        <router-link :to="{ name: 'Products' }">
+          Visit Products Page
+        </router-link>
+      </div>
     </div>
 
     <app-footer />

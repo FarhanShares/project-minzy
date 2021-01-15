@@ -15,34 +15,10 @@ export default {
       aows: false
     },
     products: {
-      ou: [
-        { id: "OU_01", name: "ou-01", sku: "SKU001" },
-        { id: "OU_02", name: "ou-02", sku: "SKU002" },
-        { id: "OU_03", name: "ou-03", sku: "SKU003" },
-        { id: "OU_04", name: "ou-04", sku: "SKU004" },
-        { id: "OU_05", name: "ou-05", sku: "SKU005" }
-      ],
-      gow: [
-        { id: "GOW_01", name: "gow-01", sku: "SKU001" },
-        { id: "GOW_02", name: "gow-02", sku: "SKU002" },
-        { id: "GOW_03", name: "gow-03", sku: "SKU003" },
-        { id: "GOW_04", name: "gow-04", sku: "SKU004" },
-        { id: "GOW_05", name: "gow-05", sku: "SKU005" }
-      ],
-      dow: [
-        { id: "DOW_01", name: "dow-01", sku: "SKU001" },
-        { id: "DOW_02", name: "dow-02", sku: "SKU002" },
-        { id: "DOW_03", name: "dow-03", sku: "SKU003" },
-        { id: "DOW_04", name: "dow-04", sku: "SKU004" },
-        { id: "DOW_05", name: "dow-05", sku: "SKU005" }
-      ],
-      aows: [
-        { id: "AOWS_01", name: "aows-01", sku: "SKU001" },
-        { id: "AOWS_02", name: "aows-02", sku: "SKU002" },
-        { id: "AOWS_03", name: "aows-03", sku: "SKU003" },
-        { id: "AOWS_04", name: "aows-04", sku: "SKU004" },
-        { id: "AOWS_05", name: "aows-05", sku: "SKU005" }
-      ]
+      ou: [{ id: "OU_01", name: "ou-01", sku: "SKU001" }],
+      gow: [{ id: "GOW_01", name: "gow-01", sku: "SKU001" }],
+      dow: [{ id: "DOW_01", name: "dow-01", sku: "SKU001" }],
+      aows: [{ id: "AOWS_01", name: "aows-01", sku: "SKU001" }]
     }
   },
 

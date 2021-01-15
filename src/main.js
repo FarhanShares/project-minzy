@@ -21,9 +21,9 @@ Vue.use(VueTailwind, vueTailwindTheme);
 
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
-  color: "rgb(143, 255, 199)",
+  color: "#FCD34D",
   failedColor: "red",
-  height: "5px"
+  height: "10px"
 });
 
 import Loading from "vue-loading-overlay";
@@ -35,6 +35,9 @@ Vue.use(Loading, {
   opacity: 0,
   blur: null
 });
+
+import SpinnerSkeleton from "@/components/skeleton/SpinnerSkeleton";
+Vue.component("SpinnerSkeleton", SpinnerSkeleton);
 
 new Vue({
   router,

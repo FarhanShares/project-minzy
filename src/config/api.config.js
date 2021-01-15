@@ -1,5 +1,5 @@
 export default {
-  baseURL: "http://warhorse.kinsta.cloud",
+  baseURL: "https://proxy-testapi.herokuapp.com/api/",
   commonHeaders: {
     Accept: "application/json",
     "Content-Type": "application/json"

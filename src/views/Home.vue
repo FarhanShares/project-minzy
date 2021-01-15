@@ -140,7 +140,6 @@ export default {
   },
   created() {
     this.$Progress.start();
-    emitter.emit("foo", { a: "b" });
 
     // Get products from shop ou
     this.$ou
@@ -174,9 +173,7 @@ export default {
 
     this.$Progress.finish();
   },
-  mounted() {
-    emitter.on("foo", e => console.log("fooData", e));
-  },
+  mounted() {},
   methods: {
     handleClickingProduct(item, shop) {
       this.$store.dispatch("selectAProduct", { id: item, shop });

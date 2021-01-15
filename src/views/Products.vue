@@ -37,7 +37,7 @@
 
         <div class="grid grid-cols-1 mt-6 lg:grid-cols-4 gap-x-8">
           <template v-for="(item, index) in getProducts(currentShopId)">
-            <order-item
+            <product-item
               class="my-3"
               :id="item.id"
               :shop="currentShopId"
@@ -63,7 +63,7 @@
             select-all from shop {{ shopId }}
           </div>
           <template v-for="(item, index) in getProducts(shopId)">
-            <order-item
+            <product-item
               class="my-3"
               :key="index"
               :id="item.id"
@@ -95,7 +95,7 @@
 <script>
 import AppTopbar from "@/components/topbar/AppTopbar.vue";
 import AppBreadcrumb from "@/components/breadcrumb/AppBreadcrumb.vue";
-import OrderItem from "@/components/shop/OrderItem.vue";
+import ProductItem from "@/components/shop/ProductItem.vue";
 import AppFooter from "@/components/footer/AppFooter";
 
 import PageEurope from "@/views/PageEurope";
@@ -114,7 +114,7 @@ export default {
   components: {
     AppTopbar,
     AppBreadcrumb,
-    OrderItem,
+    ProductItem,
     AppFooter,
     PageEurope,
     PageWorld,
@@ -132,13 +132,13 @@ export default {
 
   computed: {
     getSelectedProducts() {
-      return this.$store.getters["order/getSelectedProducts"]("all");
+      return this.$store.getters["product/getSelectedProducts"]("all");
     },
     getSelectionCount() {
-      return this.$store.getters["order/getSelectionCount"];
+      return this.$store.getters["product/getSelectionCount"];
     },
     isAnythingSelected() {
-      return this.$store.getters["order/getSelectionCount"] > 0;
+      return this.$store.getters["product/getSelectionCount"] > 0;
     }
   },
 
@@ -149,7 +149,7 @@ export default {
     this.$ou
       .get(OuConfig.api.orders.index)
       .then(res => {
-        this.$store.dispatch("order/addProductsToShop", {
+        this.$store.dispatch("product/addProductsToShop", {
           shop: "ou",
           products: res.data,
           reset: true
@@ -164,7 +164,7 @@ export default {
     this.$gow
       .get(OuConfig.api.orders.index)
       .then(res => {
-        this.$store.dispatch("order/addProductsToShop", {
+        this.$store.dispatch("product/addProductsToShop", {
           shop: "gow",
           products: res.data,
           reset: true
@@ -182,13 +182,13 @@ export default {
 
   methods: {
     handleClickingProduct(item, shop) {
-      this.$store.dispatch("order/selectAProduct", { id: item, shop });
+      this.$store.dispatch("product/selectAProduct", { id: item, shop });
     },
     handleSelection(from = "all") {
-      this.$store.dispatch("order/selectAllProducts", { shop: from });
+      this.$store.dispatch("product/selectAllProducts", { shop: from });
     },
     getProducts(shopName) {
-      return this.$store.state["order"].products[shopName];
+      return this.$store.state["product"].products[shopName];
     },
     handleSwitchingShop(e) {
       this.currentShopId = e;

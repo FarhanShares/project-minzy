@@ -212,20 +212,21 @@ export default {
           .post("/packages", package_create)
           .then(async res => {
             // let pkg_docs = res.data.documents;
-            let popup = {};
 
             let pkg = res.data;
             let pkg_id = res.data.packageId;
             let pkg_barcodes = res.data.addressBarcodes;
 
+            let popup = { pkg: pkg };
+
             await this.$http
               .post("/documents", shippingDocumentJson(pkg_id, pkg_barcodes[0]))
               .then(res => {
                 popup = { pkg: pkg, docs: res.data };
-                emitter.emit("labels-data", popup);
-
-                this.$modal.show("labels-popup");
               });
+
+            emitter.emit("labels-data", popup);
+            this.$modal.show("labels-popup");
 
             this.$Progress.finish();
           })

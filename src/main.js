@@ -37,7 +37,7 @@ Vue.use(Loading, {
 });
 
 import SpinnerSkeleton from "@/components/skeleton/SpinnerSkeleton";
-Vue.component(SpinnerSkeleton);
+Vue.component("SpinnerSkeleton", SpinnerSkeleton);
 
 new Vue({
   router,

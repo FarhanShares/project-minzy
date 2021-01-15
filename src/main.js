@@ -21,9 +21,9 @@ Vue.use(VueTailwind, vueTailwindTheme);
 
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
-  color: "rgb(143, 255, 199)",
+  color: "#FCD34D",
   failedColor: "red",
-  height: "5px"
+  height: "10px"
 });
 
 import Loading from "vue-loading-overlay";

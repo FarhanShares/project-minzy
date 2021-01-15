@@ -16,7 +16,14 @@ export function shippingDocumentJson(
   };
 }
 
-export function createPackageJson(items) {
+export function createPackageJson(
+  items = [{
+    name: "Item name",
+    value: 1,
+    weight: 100,
+    quantity: 1
+  }]
+) {
   return {
     package_create: {
       user: 8761,

@@ -132,13 +132,13 @@ export default {
 
   computed: {
     getSelectedProducts() {
-      return this.$store.getters.getSelectedProducts("all");
+      return this.$store.getters["order/getSelectedProducts"]("all");
     },
     getSelectionCount() {
-      return this.$store.getters.getSelectionCount;
+      return this.$store.getters["order/getSelectionCount"];
     },
     isAnythingSelected() {
-      return this.$store.getters.getSelectionCount > 0;
+      return this.$store.getters["order/getSelectionCount"] > 0;
     }
   },
 
@@ -149,7 +149,7 @@ export default {
     this.$ou
       .get(OuConfig.api.orders.index)
       .then(res => {
-        this.$store.dispatch("addProductsToShop", {
+        this.$store.dispatch("order/addProductsToShop", {
           shop: "ou",
           products: res.data,
           reset: true
@@ -164,7 +164,7 @@ export default {
     this.$gow
       .get(OuConfig.api.orders.index)
       .then(res => {
-        this.$store.dispatch("addProductsToShop", {
+        this.$store.dispatch("order/addProductsToShop", {
           shop: "gow",
           products: res.data,
           reset: true
@@ -182,13 +182,13 @@ export default {
 
   methods: {
     handleClickingProduct(item, shop) {
-      this.$store.dispatch("selectAProduct", { id: item, shop });
+      this.$store.dispatch("order/selectAProduct", { id: item, shop });
     },
     handleSelection(from = "all") {
-      this.$store.dispatch("selectAllProducts", { shop: from });
+      this.$store.dispatch("order/selectAllProducts", { shop: from });
     },
     getProducts(shopName) {
-      return this.$store.state.products[shopName];
+      return this.$store.state["order"].products[shopName];
     },
     handleSwitchingShop(e) {
       this.currentShopId = e;

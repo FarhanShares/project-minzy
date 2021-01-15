@@ -123,6 +123,8 @@ export default {
 
   data() {
     return {
+      isLoading: false,
+      isLoaded: false,
       name: "Farhan Israq",
       currentShopId: "all",
       currentPageId: "labels",

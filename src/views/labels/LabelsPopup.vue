@@ -1,11 +1,13 @@
 <template>
   <t-modal header="print labels" name="labels-popup" ref="popup">
     tracking codes
+
     <div v-if="shouldFetchDocument" class="px-1 py-2 my-1 border-yellow-400">
       <div class="text-blue-400">document is being generated..</div>
 
       <div class="text-purple-600 cursor-pointer" @click="fetchDocument">
         click to fetch again
+        <span v-if="refetch">⟲</span>
       </div>
     </div>
 
